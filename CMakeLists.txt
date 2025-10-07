@@ -21,5 +21,6 @@ set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost CONFIG REQUIRED COMPONENTS program_options)
 message(STATUS "Boost version ${Boost_VERSION}")
 
-add_executable(xsdmerge "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
+file(GLOB xsdmerge-src "${CMAKE_CURRENT_SOURCE_DIR}/src/*")
+add_executable(xsdmerge ${xsdmerge-src})
 target_link_libraries(xsdmerge PRIVATE RapidXML Boost::program_options)
